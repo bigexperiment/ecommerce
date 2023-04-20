@@ -8,15 +8,10 @@ export const ProductPage = ({ cartData, changeCartData }) => {
   const addToCartHandler = (id) => {
     console.log(id);
 
-    let cartValues = cartData;
-
-    if (cartValues[id] > 0) {
-      cartValues[id] += 1;
-    } else {
-      cartValues[id] = 1;
-    }
-
-    changeCartData(cartValues);
+    changeCartData({
+      ...cartData,
+      [id]: (cartData[id] || 0) + 1,
+    });
   };
 
   return (

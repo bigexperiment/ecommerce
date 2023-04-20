@@ -17,8 +17,16 @@ function App() {
     console.log(cartData);
   }, [cartData]);
 
-  const cartLength =
-    Object.values(cartData).length !== 0 ? Object.values(cartData).length : 0;
+  // const cartLength =
+  //   Object.values(cartData).length !== 0 ? Object.values(cartData).length : 0;
+
+  const cartDataIntoArray = Object.values(cartData);
+
+  let cartLength = 0;
+  cartDataIntoArray.forEach((item) => {
+    item = parseInt(item);
+    cartLength += item;
+  });
 
   return (
     <div>

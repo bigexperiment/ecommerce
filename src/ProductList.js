@@ -1,7 +1,7 @@
 export const PRODUCT_LIST = [
   {
     id: 1,
-    name: "Abigail™ Orthopedic Sandals",
+    name: "Abigail Orthopedic Sandals",
     price: 41,
     image:
       "https://cdn.shopify.com/s/files/1/0731/8215/0945/products/4_ca57b95b-121a-4045-91e3-96ed5e4f916e_1024x1024.png?v=1681081523",
