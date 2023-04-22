@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, json } from "react-router-dom";
 import "./App.css";
 
 import { ProductPage } from "./ProductPage";
@@ -11,11 +11,15 @@ function App() {
 
   const changeCartData = (data) => {
     setCartData(data);
+    localStorage.setItem("cartData", JSON.stringify(data));
   };
 
   useEffect(() => {
-    console.log(cartData);
-  }, [cartData]);
+    let savedCartData = localStorage.getItem("cartData");
+    if (savedCartData) {
+      setCartData(JSON.parse(savedCartData));
+    }
+  }, []);
 
   // const cartLength =
   //   Object.values(cartData).length !== 0 ? Object.values(cartData).length : 0;
@@ -51,7 +55,12 @@ function App() {
                 />
               }
             />
-            <Route path="/cart" element={<Cart cartData={cartData} />} />
+            <Route
+              path="/cart"
+              element={
+                <Cart cartData={cartData} changeCartData={changeCartData} />
+              }
+            />
           </Routes>
         </div>
       </BrowserRouter>
