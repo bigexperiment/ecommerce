@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { PRODUCT_LIST } from "./ProductList";
+import { useState } from "react";
 
 export const ProductPage = ({ cartData, changeCartData }) => {
   const { id } = useParams();
@@ -13,7 +14,11 @@ export const ProductPage = ({ cartData, changeCartData }) => {
       [id]: (cartData[id] || 0) + 1,
     });
   };
+  const [num, setNum] = useState(0);
 
+  const change = (e) => {
+    setNum(e.target.value);
+  };
   return (
     <div>
       <h3>Product: {PRODUCT_LIST[productSelected].name}</h3>

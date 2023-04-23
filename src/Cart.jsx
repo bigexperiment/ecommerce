@@ -4,7 +4,7 @@ const Cart = ({ cartData, changeCartData }) => {
   const increase = (value) => {
     let cartValues = { ...cartData };
 
-    cartValues[value] = cartValues[value] + 1;
+    cartValues[value] = parseInt(cartValues[value]) + 1;
 
     changeCartData(cartValues);
   };
@@ -21,6 +21,7 @@ const Cart = ({ cartData, changeCartData }) => {
 
   const handleChange = (event, data) => {
     const { value } = event.target;
+
     const cartValues = { ...cartData, [data]: value };
     changeCartData(cartValues);
   };
@@ -52,8 +53,11 @@ const Cart = ({ cartData, changeCartData }) => {
           <button onClick={() => deleteHandler(data)}> Delete</button>
         </div>
       ))}
-
-      <button> Checkout </button>
+      {Object.keys(cartData).length > 0 ? (
+        <button onClick={() => alert("checkout")}> checkout </button>
+      ) : (
+        "Your cart is empty. "
+      )}
     </div>
   );
 };
